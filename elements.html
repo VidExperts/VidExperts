@@ -19,12 +19,19 @@
 					<nav id="nav">
 						<ul>
 							<li><a href="index.html">Home</a></li>
-							<li>
-								<a href="#four">Services</a>
+							<li> 
+								<a  href="#four">Services</a>							
 								<ul>
-									<li><a href="left-sidebar.html">Left Sidebar</a></li>
-									<li><a href="right-sidebar.html">Right Sidebar</a></li>
-									<li><a href="no-sidebar.html">No Sidebar</a></li>
+									<li><a href="#">For Clients</a>
+										<ul>
+											<li> <a href="left-sidebar.html"> Post a Project</a></li>
+										</ul>
+									</li>
+									<li><a href="#">For Editors</a>
+										<ul>
+											<li> <a href="right-sidebar.html"> Find Work</a></li>
+										</ul></li>
+									<!-- <li><a href="no-sidebar.html">No Sidebar</a></li>
 									<li>
 										<a href="#">Submenu</a>
 										<ul>
@@ -33,10 +40,11 @@
 											<li><a href="#">Option 3</a></li>
 											<li><a href="#">Option 4</a></li>
 										</ul>
-									</li>
+									</li> -->
 								</ul>
 							</li>
-							<li><a href="about-us.html">About Us</a></li>
+							<li><a href="elements.html">Contact Us</a></li>
+							<li><a href="about-us.html"> About us</a></li>
 							<li><a href="#" class="button primary">Sign Up</a></li>
 						</ul>
 					</nav>
@@ -46,11 +54,11 @@
 				<div id="main" class="wrapper style1">
 					<div class="container">
 						<header class="major">
-							<h2>Elements</h2>
-							<p>Ipsum dolor feugiat aliquam tempus sed magna lorem consequat accumsan</p>
+							<h2>Get in Touch</h2>
+							<p>We’d love to hear from you! Whether you have a question, feedback, or just want to say hello, reach out and we’ll get back to you soon.		</p>
 						</header>
 
-						<!-- Text -->
+						<!-- Text 
 							<section>
 								<h3>Text</h3>
 								<p>This is <b>bold</b> and this is <strong>strong</strong>. This is <i>italic</i> and this is <em>emphasized</em>.
@@ -94,9 +102,9 @@
 
 	print 'It took ' + i + ' iterations to sort the deck.';
 	</code></pre>
-							</section>
+							</section> -->
 
-						<!-- Lists -->
+						<!-- Lists 
 							<section>
 								<h3>Lists</h3>
 								<div class="row">
@@ -187,9 +195,9 @@
 										</ul>
 									</div>
 								</div>
-							</section>
+							</section> -->
 
-						<!-- Table -->
+						<!-- Table 
 							<section>
 								<h3>Table</h3>
 								<h4>Default</h4>
@@ -282,9 +290,9 @@
 										</tfoot>
 									</table>
 								</div>
-							</section>
+							</section> -->
 
-						<!-- Buttons -->
+						<!-- Buttons 
 							<section>
 								<h3>Buttons</h3>
 								<ul class="actions">
@@ -318,12 +326,13 @@
 									<li><span class="button primary disabled">Primary</span></li>
 									<li><span class="button disabled">Default</span></li>
 								</ul>
-							</section>
+							</section> -->
 
 						<!-- Form -->
 							<section>
-								<h3>Form</h3>
-								<form method="post" action="#">
+								<h3>Fill out the Form Below</h3>
+								<form name="Contact" method="post" data-netlify="true"
+								netlify-honeypot="bot-field">
 									<div class="row gtr-uniform gtr-50">
 										<div class="col-6 col-12-xsmall">
 											<input type="text" name="name" id="name" value="" placeholder="Name" />
@@ -332,15 +341,63 @@
 											<input type="email" name="email" id="email" value="" placeholder="Email" />
 										</div>
 										<div class="col-12">
-											<select name="category" id="category">
-												<option value="">- Category -</option>
+											<label for="userType"> I am a</label>
+											<select name="userType" id="userType" onchange="updateCategories()">
+												<option value="">-Select-</option>
+												<option value="client">Client</option>
+												<option value="editor">Editor</option>
+											</select>
+										
+
+										</div>
+										<div class="col-12">
+											<label for="query">Select your Query</label>
+											<select name="query" id="query">
+												<!--<option value="">- Category -</option>
 												<option value="1">Manufacturing</option>
 												<option value="1">Shipping</option>
 												<option value="1">Administration</option>
-												<option value="1">Human Resources</option>
+												<option value="1">Human Resources</option> -->
 											</select>
+											<script>
+												function updateCategories() {
+												  var userType = document.getElementById("userType").value;
+												  var queryDropdown = document.getElementById("query");
+												
+												  // Clear existing options
+												  queryDropdown.innerHTML = "";
+												
+												  if (userType === "client") {
+													var clientOptions = [
+													  { value: "project", text: "Project Inquiry (Video Editing / Graphic Design)" },
+													  { value: "pricing", text: "Pricing & Packages" },
+													  { value: "collaboration", text: "Collaboration / Partnership" },
+													  { value: "support", text: "Technical Support" },
+													  { value: "other", text: "Other" }
+													];
+													addOptions(queryDropdown, clientOptions);
+												  } else if (userType === "editor") {
+													var editorOptions = [
+													  { value: "job", text: "Job / Freelance Opportunity" },
+													  { value: "portfolio", text: "Submit Portfolio / Work Samples" },
+													  { value: "collaboration", text: "Collaboration Inquiry" },
+													  { value: "other", text: "Other" }
+													];
+													addOptions(queryDropdown, editorOptions);
+												  }
+												}
+												
+												function addOptions(selectElement, optionsArray) {
+												  optionsArray.forEach(option => {
+													var newOption = document.createElement("option");
+													newOption.value = option.value;
+													newOption.text = option.text;
+													selectElement.appendChild(newOption);
+												  });
+												}
+												</script>
 										</div>
-										<div class="col-4 col-12-medium">
+										<!--<div class="col-4 col-12-medium">
 											<input type="radio" id="priority-low" name="priority" checked>
 											<label for="priority-low">Low Priority</label>
 										</div>
@@ -359,7 +416,7 @@
 										<div class="col-6 col-12-medium">
 											<input type="checkbox" id="human" name="human" checked>
 											<label for="human">I am a human and not a robot</label>
-										</div>
+										</div> -->
 										<div class="col-12">
 											<textarea name="message" id="message" placeholder="Enter your message" rows="6"></textarea>
 										</div>
@@ -373,7 +430,7 @@
 								</form>
 							</section>
 
-						<!-- Image -->
+						<!-- Image 
 							<section>
 								<h3>Image</h3>
 								<h4>Fit</h4>
@@ -401,24 +458,25 @@
 							</section>
 
 					</div>
-				</div>
+				</div> -->
 
 			<!-- Footer -->
-				<footer id="footer">
-					<ul class="icons">
-						<li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
-						<li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
-						<li><a href="#" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
-						<li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
-						<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-						<li><a href="#" class="icon solid alt fa-envelope"><span class="label">Email</span></a></li>
-					</ul>
-					<ul class="copyright">
-						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-					</ul>
-				</footer>
+			<footer id="footer">
+				<ul class="icons">
+					<!-- <li><a href="#" class="icon brand"><span class="label" ><img src="images/pic14.svg" alt=""></span></a></li> -->
+					<li><a href="#" target="_blank" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
+					<li><a href="https://www.linkedin.com/company/videxperts" target="_blank" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+					<li><a href="https://www.instagram.com/vidxperts" target="_blank" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
+					<li><a href="https://github.com/VidExperts" target="_blank" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+					<li><a href="mailto:videxperts@gmail.com" target="_blank" class="icon solid alt fa-envelope"><span class="label">Email</span></a></li>
+				</ul>
+				<ul class="copyright">
+					<li>&copy; 2024 VidExperts. All rights reserved.</li><li>Made With ❤️ By: <a href="https://www.linkedin.com/in/ayush-gupta-16618b258/">Ayush Gupta</a></li>
+				</ul>
+			</footer>
 
-		</div>
+	</div>
+	<button onclick="topFunction()" id="scrollTopBtn" title="Go to top">▲</button>
 
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
@@ -429,6 +487,8 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script src="assets/js/scroll-to-top.js"></script>
+
 
 	</body>
 </html>
