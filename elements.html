@@ -332,7 +332,9 @@
 							<section>
 								<h3>Fill out the Form Below</h3>
 								<form name="Contact" method="post" data-netlify="true"
-								netlify-honeypot="bot-field">
+								netlify-honeypot="bot-field" action="thank-you.html">
+								<input type="hidden" name="form-name" value="contact">
+								<p hidden><label >Don't fill this out: <input name="bot-field"></label></p>
 									<div class="row gtr-uniform gtr-50">
 										<div class="col-6 col-12-xsmall">
 											<input type="text" name="name" id="name" value="" placeholder="Name" />
@@ -422,7 +424,7 @@
 										</div>
 										<div class="col-12">
 											<ul class="actions">
-												<li><input type="submit" value="Send Message" class="primary" /></li>
+												<li > <input type="submit" value="Send Message" class="primary"></li>
 												<li><input type="reset" value="Reset" /></li>
 											</ul>
 										</div>
